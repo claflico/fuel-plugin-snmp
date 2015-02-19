@@ -1,2 +1,1 @@
-# fuel-plugin-snmp
-Snmp plugin for Mirantis Fuel
+Plugins for Mirantis Fuel
