@@ -1,6 +1,5 @@
 # Plugin name
 name: snmp
-# Human-readable name for your plugin
 title: External snmp
 # Plugin version
 version: 1.0.0
