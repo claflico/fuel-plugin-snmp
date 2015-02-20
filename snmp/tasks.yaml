@@ -1,8 +1,8 @@
 # Task is applied for all roles
 - role: '*'
- stage: post_deployment
- type: puppet
- parameters:
- puppet_manifest: puppet/manifests/site.pp
- puppet_modules: puppet/modules
- timeout: 360
+  stage: post_deployment
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site.pp
+    puppet_modules: puppet/modules
+    timeout: 360

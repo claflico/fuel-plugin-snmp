@@ -1,5 +1,5 @@
 attributes:
-  snmp_polling_port_text:
+  snmp_polling_port:
     type: "text"
     weight: 10
     value: "161"
@@ -8,17 +8,17 @@ attributes:
     regex:
       source: '\S'
       error: "Error field cannot be empty"
-  snmp_location_text:
+  snmp_location:
     type: "text"
     weight: 20
     value: ""
     label: "System location"
-  snmp_contact_text:
+  snmp_contact:
     type: "text"
     weight: 30
     value: ""
     label: "System contact"
-  snmp_read_community_text:
+  snmp_read_community:
     type: "text"
     weight: 40
     value: "public"
@@ -27,7 +27,7 @@ attributes:
     regex:
       source: '\S'
       error: "Error field cannot be empty"
-  snmp_monitor_host_text:
+  snmp_monitor_host:
     type: "text"
     weight: 50
     value: ""
