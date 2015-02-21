@@ -1,6 +1,6 @@
 # Task is applied for all roles
 - role: '*'
-  stage: post_deployment
+  stage: pre_deployment
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site.pp
