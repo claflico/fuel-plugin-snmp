@@ -4,5 +4,5 @@
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site.pp
-    puppet_modules: puppet/modules
+    puppet_modules: /etc/puppet/modules
     timeout: 360
