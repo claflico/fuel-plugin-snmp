@@ -1,10 +1,10 @@
 # Plugin name
-name: ext_snmp
-title: External snmp
+name: snmp
+title: Snmp Settings
 # Plugin version
 version: 1.0.0
 # Description
-description: Enable to use external snmp for node monitoring
+description: Enable to allow snmp for node monitoring
 # Required fuel version
 fuel_version: ['6.0']
 
