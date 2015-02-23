@@ -1,5 +1,5 @@
 # Plugin name
-name: snmp
+name: ext_snmp
 title: External snmp
 # Plugin version
 version: 1.0.0
