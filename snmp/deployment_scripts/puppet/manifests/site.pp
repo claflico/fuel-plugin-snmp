@@ -15,13 +15,12 @@ class { 'snmp':
   location      => $fuel_settings['snmp']['snmp_location'],
 }
 
-class snmp::firewall {
+# Create a firewall rule
+notice('MODULAR: firewall.pp')
 
-  class {'::firewall':}
-
-  firewall {'161 snmp udp':
-    port   => $snmp_polling_port,
-    proto  => 'udp',
-    action => 'accept',
-  }
+firewall {"$snmp_polling_port snmp ":
+  sport   => [ $snmp_polling_port ],
+  source  => $snmp_monitor_host,
+  proto   => 'udp',
+  action  => 'accept',
 }
