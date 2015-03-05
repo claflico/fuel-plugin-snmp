@@ -1,18 +1,27 @@
-#$fuel_settings = parseyaml(file('/etc/astute.yaml'))
+$fuel_settings = parseyaml(file('/etc/astute.yaml'))
+$snmp_polling_port = $fuel_settings['snmp']['snmp_polling_port']
+$snmp_read_community = $fuel_settings['snmp']['snmp_read_community']
+$snmp_monitor_host = $fuel_settings['snmp']['snmp_monitor_host']
 
-# Just apply snmp settings
+# Apply snmp settings
 class { 'snmp':
-  agentaddress => $fuel_settings['snmp']['snmp_polling_port'],
-  rocommunity  => $fuel_settings['snmp']['snmp_read_community'],
-  ro_network   => $fuel_settings['snmp']['snmp_monitor_host'],
-  contact      => $fuel_settings['snmp']['snmp_contact'],
-  location     => $fuel_settings['snmp']['snmp_location'],
+  agentaddress  => [ "udp:${snmp_polling_port}", "udp6:${snmp_polling_port}" ],
+  ro_community  => $snmp_read_community,
+  ro_community6 => $snmp_read_community,
+  ro_network    => $snmp_monitor_host,
+  com2sec       => [ "notConfigUser $snmp_monitor_host $snmp_read_community" ],
+  com2sec6      => [ "notConfigUser $snmp_monitor_host $snmp_read_community" ],
+  contact       => $fuel_settings['snmp']['snmp_contact'],
+  location      => $fuel_settings['snmp']['snmp_location'],
 }
 
-#class { 'snmp':
-#  agentaddress => [ 'udp:161', 'udp6:161' ],
-#  com2sec      => [ 'notConfigUser 10.20.30.40/32 SeCrEt' ],
-#  contact      => 'root@yourdomain.org',
-#  location     => 'Phoenix, AZ',
-#}
+class snmp::firewall {
 
+  class {'::firewall':}
+
+  firewall {'161 snmp udp':
+    port   => $snmp_polling_port,
+    proto  => 'udp',
+    action => 'accept',
+  }
+}

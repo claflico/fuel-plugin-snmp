@@ -10,4 +10,4 @@ DEB_REPO="${ROOT}"/repositories/ubuntu/
 
 wget -qO- "${REPO_PATH}" | \
     tar -C "${MODULES}" --strip-components=3 -zxvf - \
-    stackforge-fuel-library-f43d885/deployment/puppet/{inifile,stdlib}
+    stackforge-fuel-library-f43d885/deployment/puppet/{inifile,stdlib,firewall}
