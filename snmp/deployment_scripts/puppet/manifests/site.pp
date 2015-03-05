@@ -4,6 +4,8 @@ $snmp_read_community = $fuel_settings['snmp']['snmp_read_community']
 $snmp_monitor_host = $fuel_settings['snmp']['snmp_monitor_host']
 
 # Apply snmp settings
+notice('PLUGIN: snmp:service')
+
 class { 'snmp':
   agentaddress  => [ "udp:${snmp_polling_port}", "udp6:${snmp_polling_port}" ],
   ro_community  => $snmp_read_community,
@@ -16,7 +18,7 @@ class { 'snmp':
 }
 
 # Create a firewall rule
-notice('MODULAR: firewall.pp')
+notice('PLUGIN: snmp:firewall')
 
 firewall {"$snmp_polling_port snmp ":
   sport   => [ $snmp_polling_port ],
